@@ -16,7 +16,7 @@ def app():
             'installs', 'app_type', 'price', 'content_rating','genre',
             'last_updated', 'current_ver', 'android_ver']
         
-        review_values = ["10 Best Foods for You",'I like eat delicious food. That"s I"m cooking food myself, case ""10 Best Foods"" helps lot, also Best Before (Shelf Life)',
+        review_values = ["10 Best Foods for You",'I like eat delicious food. That''s I''m cooking food myself, case ""10 Best Foods"" helps lot, also Best Before (Shelf Life)',
               "Positive","1.0","0.5333333333333333"]
         review_values_2 = ["11st","Horrible ID verification","Negative","-1.0","1.0"]
         review_cols = ['app','translated_review','sentiment','sentiment_polarity','sentiment_subjectivity']
@@ -30,9 +30,6 @@ def app():
         add_records(cursor,app_table,app_cols,app_values_2)
         add_records(cursor,review_table, review_cols, review_values)
         add_records(cursor,review_table, review_cols, review_values_2)
-        # drop_records(cursor, conn, 'venues')
-        # drop_records(cursor, conn, 'categories')
-        # build_records(conn, cursor)
         conn.commit()
         close_conn(conn)
     yield flask_app
