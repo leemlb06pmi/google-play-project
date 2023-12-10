@@ -7,4 +7,4 @@ CREATE TABLE IF NOT EXISTS app_reviews (
   sentiment VARCHAR(255),
   sentiment_polarity DECIMAL,
   sentiment_subjectivity DECIMAL
-);
+); 

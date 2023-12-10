@@ -1,0 +1,19 @@
+<html>
+    {% if results|length == 0 %}
+    <p>
+        There are now reviews for this App
+    </p>
+    {% endif %}
+    <p>
+        There are {{results|length}} reviews for this app:
+    </p>
+        {% for result in results %}
+        <ul>
+            {% for key in result %}
+            <li>
+                {{key}}: {{result[key]}}
+            </li>
+            {% endfor %}
+        </ul>
+        {% endfor %}
+</html>
