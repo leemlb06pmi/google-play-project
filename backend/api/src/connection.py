@@ -7,8 +7,6 @@ def get_cursor(conn):
     return conn.cursor()
 
 def add_records(cursor,table,columns,values):
-    #var = f'INSERT INTO {table} ({",".join(columns)}) VALUES {tuple(values)}'
-    #breakpoint()
     cursor.execute(f'INSERT INTO {table} ({",".join(columns)}) VALUES {tuple(values)}')
 
 def drop_records(cursor,table):
