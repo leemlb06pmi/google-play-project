@@ -1,6 +1,5 @@
 from flask import Flask, jsonify, render_template
-import api.models.apps as apps
-import api.models.reviews as revs
+import api.models as models
 import api.src.connection as connex
 import api.src.orm as orm
 
@@ -21,7 +20,7 @@ def create_app(database,user)->Flask:
         conn = connex.build_connection(app.config['DATABASE'],app.config['USER'])
         cursor = connex.get_cursor(conn)
         cursor.execute("SELECT * FROM apps order by app;")
-        rets = orm.build_from_records(apps.App, cursor.fetchall())
+        rets = orm.build_from_records(models.App, cursor.fetchall())
         return [ret.__dict__ for ret in rets]
     
     @app.route('/all_reviews')
@@ -29,7 +28,7 @@ def create_app(database,user)->Flask:
         conn = connex.build_connection(app.config['DATABASE'],app.config['USER'])
         cursor = connex.get_cursor(conn)
         cursor.execute("SELECT * FROM app_reviews WHERE translated_review != 'nan';")
-        rets = orm.build_from_records(revs.Review, cursor.fetchall())
+        rets = orm.build_from_records(models.Review, cursor.fetchall())
         return [ret.__dict__ for ret in rets]
     
     # @app.route('/<application>/reviews')
